@@ -45,8 +45,36 @@ const Login_Style = StyleSheet.create({
     backgroundColor: 'white',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    zIndex: 0.5, // Ensure this view is on top
+    zIndex: 0.5,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logincard: {
+    // backgroundColor: 'red',
+    height: deviceHeight / 2.9,
+    justifyContent: 'space-around',
+  },
+  Textinput_email: {
+    borderWidth: 0.2,
+    height: deviceHeight / 17,
+    width: deviceWidth / 1.3,
+    alignSelf: 'center',
+    borderRadius: 3,
+  },
+  forgotpassword: {
+    // backgroundColor: 'pink',
+    height: deviceHeight / 24,
+    width: deviceWidth / 1.5,
+    alignItems: 'flex-end',
+    marginLeft: 10,
+  },
+  signInbutton: {
+    backgroundColor: 'blue',
+    height: deviceHeight / 17,
+    width: deviceWidth / 1.3,
+    borderRadius: 9,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default Login_Style;

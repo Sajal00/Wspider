@@ -1,8 +1,18 @@
-import {View, ImageBackground, Image, Text} from 'react-native';
+import {
+  View,
+  ImageBackground,
+  TextInput,
+  Image,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import Login_Style from '../Stylesheet/LoginStyle';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const LoginScreen = () => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   return (
     <View style={Login_Style.centerview}>
       <ImageBackground
@@ -19,7 +29,28 @@ const LoginScreen = () => {
         </View>
       </ImageBackground>
       <View style={Login_Style.loginposition}>
-        <Text>Login area</Text>
+        <View style={Login_Style.logincard}>
+          <Text style={{marginLeft: 10}}>Email</Text>
+          <TextInput
+            style={Login_Style.Textinput_email}
+            onChangeText={setEmail}
+            value={email}
+            keyboardType="email-address"
+          />
+          <Text style={{marginLeft: 10}}>password</Text>
+          <TextInput
+            style={Login_Style.Textinput_email}
+            onChangeText={setEmail}
+            value={email}
+            keyboardType="email-address"
+          />
+          <View style={Login_Style.forgotpassword}>
+            <Text>Forgot Password ?</Text>
+          </View>
+          <TouchableOpacity style={Login_Style.signInbutton}>
+            <Text style={{color: 'white', fontWeight: '900'}}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
