@@ -6,14 +6,23 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Login_Style from '../Stylesheet/LoginStyle';
-import Svg, {Path} from 'react-native-svg';
+// import Svg, {Path} from 'react-native-svg';
 import UserIcon from '../Assets/Login/SVG/usericon';
+import PasswordIcon from '../Assets/Login/SVG/Passwordicon';
+import Closedeye from '../Assets/Login/SVG/Closedeye';
+import Openeyeicon from '../Assets/Login/SVG/Openeyeicon';
 
 const LoginScreen = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
   return (
     <View style={Login_Style.centerview}>
       <ImageBackground
@@ -45,12 +54,34 @@ const LoginScreen = () => {
             />
           </View>
           <Text style={{marginLeft: 10}}>password</Text>
-          <TextInput
-            style={Login_Style.Textinput_email}
-            onChangeText={setEmail}
-            value={email}
-            keyboardType="email-address"
-          />
+          <View style={Login_Style.Textinputwrapper}>
+            <View style={{position: 'absolute', left: 5}}>
+              <PasswordIcon height={24} width={20} />
+            </View>
+
+            <TextInput
+              style={Login_Style.Textinput_email}
+              onChangeText={setPassword}
+              value={password}
+              secureTextEntry={!isPasswordVisible}
+            />
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                right: 5,
+                height: 40,
+                width: 50,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onPress={() => togglePasswordVisibility()}>
+              {isPasswordVisible ? (
+                <Openeyeicon width={24} height={24} />
+              ) : (
+                <Closedeye width={24} height={24} />
+              )}
+            </TouchableOpacity>
+          </View>
           <View style={Login_Style.forgotpassword}>
             <Text>Forgot Password ?</Text>
           </View>

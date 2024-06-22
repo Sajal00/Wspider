@@ -67,6 +67,7 @@ const Login_Style = StyleSheet.create({
     borderRadius: 3,
     paddingHorizontal: 30,
   },
+
   forgotpassword: {
     // backgroundColor: 'pink',
     height: deviceHeight / 24,
