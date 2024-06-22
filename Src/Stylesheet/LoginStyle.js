@@ -54,12 +54,18 @@ const Login_Style = StyleSheet.create({
     height: deviceHeight / 2.9,
     justifyContent: 'space-around',
   },
+  Textinputwrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   Textinput_email: {
     borderWidth: 0.2,
     height: deviceHeight / 17,
     width: deviceWidth / 1.3,
     alignSelf: 'center',
     borderRadius: 3,
+    paddingHorizontal: 30,
   },
   forgotpassword: {
     // backgroundColor: 'pink',

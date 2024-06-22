@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import React from 'react';
 import Login_Style from '../Stylesheet/LoginStyle';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Svg, {Path} from 'react-native-svg';
+import UserIcon from '../Assets/Login/SVG/usericon';
 
 const LoginScreen = () => {
   const [email, setEmail] = React.useState('');
@@ -30,13 +31,19 @@ const LoginScreen = () => {
       </ImageBackground>
       <View style={Login_Style.loginposition}>
         <View style={Login_Style.logincard}>
-          <Text style={{marginLeft: 10}}>Email</Text>
-          <TextInput
-            style={Login_Style.Textinput_email}
-            onChangeText={setEmail}
-            value={email}
-            keyboardType="email-address"
-          />
+          <Text style={{marginLeft: 10}}>Username</Text>
+          <View style={Login_Style.Textinputwrapper}>
+            <View style={{position: 'absolute', left: 5}}>
+              <UserIcon height={24} width={20} />
+            </View>
+
+            <TextInput
+              style={Login_Style.Textinput_email}
+              onChangeText={setEmail}
+              value={email}
+              keyboardType="email-address"
+            />
+          </View>
           <Text style={{marginLeft: 10}}>password</Text>
           <TextInput
             style={Login_Style.Textinput_email}
