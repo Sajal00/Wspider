@@ -12,7 +12,7 @@ const Navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="DashBoard"
         screenOptions={(headerShown = true)}>
         <Stack.Screen
           name="Login"
