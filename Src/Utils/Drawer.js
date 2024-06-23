@@ -15,7 +15,10 @@ import MyExpense_icon from '../Assets/Drawer/myExpenses_icon';
 import Logout_icon from '../Assets/Drawer/Logout_icon';
 import Logo_icon from '../Assets/Drawer/Logo_icon';
 
-const Drawer_component = ({props}) => {
+const Drawer_component = ({navigation}) => {
+  const handleSettings = () => {
+    navigation.navigate('Settings');
+  };
   return (
     <>
       <View style={Drawercomponent_style.header_position}>
@@ -49,7 +52,9 @@ const Drawer_component = ({props}) => {
           </View>
         </ImageBackground>
       </View>
-      <TouchableOpacity style={Drawercomponent_style.settingscard}>
+      <TouchableOpacity
+        style={Drawercomponent_style.settingscard}
+        onPress={handleSettings}>
         <View style={Drawercomponent_style.iconview}>
           <Settings_icon height={24} width={24} color="red" />
         </View>

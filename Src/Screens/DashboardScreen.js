@@ -14,7 +14,7 @@ import Header from '../Utils/Header';
 import Drawer_component from '../Utils/Drawer';
 import CheckIn_Icon from '../Assets/Dashboard/SVG/checkinIcon';
 import Checkout_Icon from '../Assets/Dashboard/SVG/checkoutIcon';
-const DashboardScreen = () => {
+const DashboardScreen = ({navigation}) => {
   const [open, setOpen] = React.useState(false);
 
   let listData = [
@@ -41,7 +41,7 @@ const DashboardScreen = () => {
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       renderDrawerContent={() => {
-        return <Drawer_component />;
+        return <Drawer_component navigation={navigation} />;
       }}>
       <Header onPress={() => setOpen(prevOpen => !prevOpen)} />
       <View style={Dashboard_style.middle}>

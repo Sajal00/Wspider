@@ -16,7 +16,7 @@ import PasswordIcon from '../Assets/Login/SVG/Passwordicon';
 import Closedeye from '../Assets/Login/SVG/Closedeye';
 import Openeyeicon from '../Assets/Login/SVG/Openeyeicon';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -24,7 +24,9 @@ const LoginScreen = () => {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
-
+  const handleSignin = () => {
+    navigation.replace('DashBoard');
+  };
   return (
     <KeyboardAvoidingView>
       <TouchableWithoutFeedback>
@@ -89,7 +91,9 @@ const LoginScreen = () => {
               <View style={Login_Style.forgotpassword}>
                 <Text>Forgot Password ?</Text>
               </View>
-              <TouchableOpacity style={Login_Style.signInbutton}>
+              <TouchableOpacity
+                style={Login_Style.signInbutton}
+                onPress={handleSignin}>
                 <Text style={{color: 'white', fontWeight: '900'}}>Sign In</Text>
               </TouchableOpacity>
             </View>
