@@ -3,12 +3,15 @@ import React from 'react';
 import GobackIcon from '../Assets/Settings/goback_icon';
 import Setting_Style from '../Stylesheet/SettingsStyle';
 
-const SettingsHeader = ({onPress, ...props}) => {
+const SettingsHeader = ({onPress, navigation, ...props}) => {
+  const handleBackPress = () => {
+    navigation.goBack();
+  };
   return (
     <View style={Setting_Style.header}>
       <TouchableOpacity
         style={{position: 'absolute', left: 30}}
-        onPress={onPress}>
+        onPress={() => handleBackPress()}>
         <GobackIcon height={24} width={20} color="blue" />
       </TouchableOpacity>
       <View style={Setting_Style.Settingtext}>

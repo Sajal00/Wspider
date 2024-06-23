@@ -5,7 +5,7 @@ import {
   Text,
   ImageBackground,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Drawercomponent_style from '../Stylesheet/DrawerComponent_Style';
 import Phonecall_Icon from '../Assets/Drawer/Phonecall_icon';
 import Mail_icon from '../Assets/Drawer/mail_icon';
@@ -14,20 +14,54 @@ import CheckIn_Icon from '../Assets/Dashboard/SVG/checkinIcon';
 import MyExpense_icon from '../Assets/Drawer/myExpenses_icon';
 import Logout_icon from '../Assets/Drawer/Logout_icon';
 import Logo_icon from '../Assets/Drawer/Logo_icon';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Drawer_component = ({navigation}) => {
+  const [userDetails, setUserDetails] = useState('');
   const handleSettings = () => {
     navigation.navigate('Settings');
   };
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  const getUserData = async () => {
+    try {
+      const userData = await AsyncStorage.getItem('loggedInUser');
+      setUserDetails(JSON.parse(userData)); // Parse and set the user details
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  const handleLogOut = () => {
+    AsyncStorage.removeItem('loggedInUser');
+    navigation.navigate('Login');
+  };
+
   return (
     <>
       <View style={Drawercomponent_style.header_position}>
         <ImageBackground
           source={require('../Assets/Drawer/menu_back.png')}
           style={Drawercomponent_style.menubackground}>
-          <View style={Drawercomponent_style.pictureview}></View>
+          <View style={Drawercomponent_style.pictureview}>
+            <Image
+              source={{
+                uri:
+                  userDetails && userDetails.data?.profile_image
+                    ? userDetails.data.profile_image
+                    : '',
+              }}
+              style={Drawercomponent_style.Logo}
+            />
+          </View>
           <View style={Drawercomponent_style.profiledetailsview}>
-            <Text style={{color: 'white'}}>Alpaslan Demirci</Text>
+            <Text style={{color: 'white'}}>
+              {userDetails && userDetails.data?.username
+                ? userDetails.data.username
+                : null}
+            </Text>
             <View style={Drawercomponent_style.profiledetailSubline}>
               <Mail_icon
                 height={20}
@@ -36,7 +70,9 @@ const Drawer_component = ({navigation}) => {
                 second_color="white"
               />
               <Text style={{fontSize: 10, color: 'white'}}>
-                mailid@domain.com
+                {userDetails && userDetails.data?.email
+                  ? userDetails.data.email
+                  : null}
               </Text>
             </View>
             <View style={Drawercomponent_style.profiledetailSubline}>
@@ -47,7 +83,11 @@ const Drawer_component = ({navigation}) => {
                 second_color="white"
                 third_color="white"
               />
-              <Text style={{fontSize: 10, color: 'white'}}>+92223456789</Text>
+              <Text style={{fontSize: 10, color: 'white'}}>
+                {userDetails && userDetails.data?.phone
+                  ? userDetails.data.phone
+                  : null}
+              </Text>
             </View>
           </View>
         </ImageBackground>
@@ -85,7 +125,9 @@ const Drawer_component = ({navigation}) => {
 
       <View style={Drawercomponent_style.bottompart}>
         <View style={Drawercomponent_style.bottomsubcontent}>
-          <TouchableOpacity style={Drawercomponent_style.logoutView}>
+          <TouchableOpacity
+            style={Drawercomponent_style.logoutView}
+            onPress={() => handleLogOut()}>
             <View style={Drawercomponent_style.logouticon}>
               <Logout_icon height={24} width={24} color="blue" />
             </View>

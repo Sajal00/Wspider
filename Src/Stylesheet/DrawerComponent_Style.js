@@ -100,5 +100,11 @@ const Drawercomponent_style = StyleSheet.create({
     borderRadius: 5,
     margin: 5,
   },
+  Logo: {
+    // flex: 1,
+    width: '100%',
+    height: '100%',
+    borderRadius: 360,
+  },
 });
 export default Drawercomponent_style;

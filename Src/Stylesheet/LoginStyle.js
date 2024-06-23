@@ -5,7 +5,9 @@ const deviceWidth = Dimensions.get('window').width;
 
 const Login_Style = StyleSheet.create({
   centerview: {
-    flex: 1,
+    // flex: 1,
+    height: deviceHeight,
+    width: deviceWidth,
     backgroundColor: 'white',
   },
   upperportion: {
@@ -64,6 +66,7 @@ const Login_Style = StyleSheet.create({
     height: deviceHeight / 17,
     width: deviceWidth / 1.3,
     alignSelf: 'center',
+    justifyContent: 'center',
     borderRadius: 3,
     paddingHorizontal: 30,
   },
@@ -82,6 +85,9 @@ const Login_Style = StyleSheet.create({
     borderRadius: 9,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  loader: {
+    marginVertical: 20, // Margin around the ActivityIndicator
   },
 });
 export default Login_Style;
